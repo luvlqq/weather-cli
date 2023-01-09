@@ -3,7 +3,12 @@ import path from "path";
 import fs from "fs";
 
 // нельзя конкатенировать пути, лучше использовать бибилиотеку path, потому что мы теряем чать пути
-const filePath = path.join(os.homedir(), 'weather-data.json')
+const filePath = path.join(os.homedir(), 'weather-data.json');
+
+const TOKEN_DICTIONARY = {
+    token : 'token',
+    city : 'city'
+}
 
 const saveKeyValue = async (key, value) => {
     let data = {};
@@ -34,4 +39,4 @@ const isExist = async (isExistPath) => {
 
 }
 
-export { saveKeyValue, getKeyValue }
+export { saveKeyValue, getKeyValue, TOKEN_DICTIONARY }

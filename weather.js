@@ -2,11 +2,16 @@
 import process from 'process';
 import { getArgs } from './helpers/args.js';
 import { printErr, printSuccess, printHelp } from './services/log.service.js';
-import { saveKeyValue, getKeyValue } from './services/storage.service.js'
+import { saveKeyValue, getKeyValue, TOKEN_DICTIONARY } from './services/storage.service.js'
+import {getWeather} from "./services/api.service.js";
 
 const saveToken = async (token) => {
+  if (!token.length) {
+    printErr('No token yet')
+    return;
+  }
   try{
-    await saveKeyValue('token', token);
+    await saveKeyValue(TOKEN_DICTIONARY.token, token);
     printSuccess('Token was saved');
   }
   catch (e){
@@ -29,8 +34,9 @@ const initCLI = () => {
     return saveToken(args.t);
   }
   else {
-    // weather output
+    getWeather('Minsk');
   }
+
 };
 
 initCLI();
