@@ -1,4 +1,3 @@
-import https from 'https';
 import { getKeyValue, TOKEN_DICTIONARY } from './storage.service.js'
 import axios from "axios";
 
@@ -14,7 +13,7 @@ const getWeather = async (city) => {
             units: 'metric'
         }
     });
-    console.log(data);
+    return data;
 };
 
 
