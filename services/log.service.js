@@ -22,4 +22,18 @@ const printHelp = () => {
     )
 }
 
-export {printErr, printSuccess, printHelp}
+const printWeather = (res, icon) => {
+    console.log(
+        dedent(
+            `WEATHER. WEATHER IN CITY: ${res.name}
+            ${icon} ${res.weather[0].description};
+            Temperature: ${res.main.temp};
+            Feels like: ${res.main.feels_like};
+            Humidity: ${res.main.humidity}%;
+            Wind speed: ${res.wind.speed} ;
+            `
+        )
+    )
+}
+
+export { printErr, printSuccess, printHelp, printWeather }
